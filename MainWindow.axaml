@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Net_Stack_"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="dotNet1.MainWindow"
+        x:DataType="vm:StackViewModel"
+        Title="dotNet1">
+    <Window.DataContext>
+        <vm:StackViewModel />
+    </Window.DataContext>
+    <StackPanel Margin="10">
+        <TextBlock Text="Текущий элемент:" />
+        <TextBlock Text="{Binding CurrentItem}" Margin="0,0,0,10" />
+        <TextBlock Text="Количество элементов:" />
+        <TextBlock Text="{Binding Count}" Margin="0,0,0,10" />
+        <TextBlock Text="Стек пуст:" />
+        <TextBlock Text="{Binding IsEmpty}" Margin="0,0,0,10" />
+        <TextBox x:Name="InputBox" Watermark="Введите элемент" Margin="0,0,0,10" />
+        <Button Content="Добавить" Command="{Binding PushCommand}" CommandParameter="{Binding Text, ElementName=InputBox}" Margin="0,0,0,10" />
+        <Button Content="Удалить" Command="{Binding PopCommand}" Margin="0,0,0,10" />
+        <Button Content="Очистить" Command="{Binding ClearCommand}" />
+    </StackPanel>
+</Window>
